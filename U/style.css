@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap');
+
+@font-face {
+  font-family: 'MyFont';
+  src: url('font/myfont.ttf') format('truetype');
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'MyFont', sans-serif;
+  color: #fff;
+  overflow-x: hidden;
+  text-align: center;
+  position: relative;
+}
+
+.bokeh {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(rgba(255,255,255,0.2), transparent 70%) 0 0,
+              radial-gradient(rgba(255,255,255,0.15), transparent 70%) 50px 50px;
+  background-size: 100px 100px;
+  filter: blur(8px);
+  animation: sparkle 6s infinite alternate;
+  z-index: 0;
+}
+
+/* 🎬 Background Video */
+#bgVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1; /* agar di belakang elemen lainnya */
+  object-fit: cover;
+  filter: brightness(0.4); /* biar teks lebih kelihatan */
+}
+
+/* 🩷 Halaman Awal */
+.container {
+  margin-top: 25vh;
+}
+
+h1 {
+  color: #ebc8d2;
+  font-size: 2.5em;
+  font-family: 'MyFont', sans-serif;
+}
+
+p {
+  font-size: 1.1em;
+  margin-bottom: 25px;
+  font-family: 'MyFont', sans-serif;
+}
+
+.btn {
+  background: #fff;
+  color: #eb97c1;
+  border: none;
+  padding: 15px 40px;
+  border-radius: 40px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #e6afca;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* 💝 Halaman Kejutan */
+.hidden {
+  display: none;
+}
+
+#kejutan {
+  margin-top: 50px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Tiap slide foto + teks */
+.slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  margin: 60px 0;
+  opacity: 0;
+  transition: 1s;
+}
+
+/* Foto berbentuk love pakai border gambar */
+.foto {
+  width: 200px;
+  height: 200px;
+  background: url('love.png') no-repeat center/contain;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.foto img {
+  width: 75%;
+  height: 75%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.teks {
+  font-size: 1.3em;
+  font-family: 'MyFont', sans-serif;
+  width: 350px;
+  text-align: left;
+  opacity: 0;
+  animation: typing 3s steps(40, end) forwards;
+}
+
+.typewriter {
+  font-size: 1.3em;
+  font-family: 'MyFont', sans-serif;
+  width: 350px;
+  text-align: left;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid #fff;
+  animation: typing 4s steps(100, end), blink-caret 0.75s step-end infinite;
+}
+
+.hearts {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* biar klik tetap ke tombol */
+  overflow: hidden;
+  z-index: 10; /* pastikan di atas semua konten */
+}
+
+.hearts span {
+  position: absolute;
+  font-size: 20px;
+  color: rgba(255, 0, 0, 0.5); /* merah transparan */
+  animation: fall 5s linear infinite;
+}
+
+/* animasi jatuh dan sedikit bergerak */
+@keyframes fall {
+  0% {
+    transform: translateY(-50px) rotate(0deg);
+    opacity: 0;
+  }
+  10% { opacity: 1; }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* beri posisi acak setiap hati */
+.hearts span:nth-child(1) { left: 10%; animation-delay: 0s; }
+.hearts span:nth-child(2) { left: 30%; animation-delay: 1s; }
+.hearts span:nth-child(3) { left: 50%; animation-delay: 2s; }
+.hearts span:nth-child(4) { left: 70%; animation-delay: 3s; }
+.hearts span:nth-child(5) { left: 90%; animation-delay: 4s; }
+
+/* Glow pada semua h1 */
+h1 {
+  color: #ea92be; /* pink cerah */
+  text-shadow: 
+    0 0 5px #ff69b4,
+    0 0 10px #ff69b4,
+    0 0 20px #ff1493,
+    0 0 30px #ff1493,
+    0 0 40px #ff1493;
+}
+
+/* Glow pada h3 atau teks khusus */
+h3 {
+  color: #ffb6c1;
+  text-shadow:
+    0 0 5px #ffb6c1,
+    0 0 10px #ffb6c1,
+    0 0 15px #ff69b4;
+}
+
+/* Glow pada paragraf atau teks lain */
+p {
+  color: #fff;
+  text-shadow:
+    0 0 3px #fff,
+    0 0 5px #fff;
+}
+
+/* Bisa juga menambahkan animasi glow */
+@keyframes glow {
+  0%, 100% { text-shadow: 0 0 5px #ff69b4, 0 0 10px #ff1493; }
+  50% { text-shadow: 0 0 20px #ff69b4, 0 0 30px #ff1493; }
+}
+
+h1 {
+  animation: glow 2s infinite alternate;
+}
+
+
+/* ✨ Animasi */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: #fff; }
+}
